@@ -1,0 +1,2 @@
+# Só para rodar os testes. O runtime continua sem dependência nenhuma.
+pytest>=7

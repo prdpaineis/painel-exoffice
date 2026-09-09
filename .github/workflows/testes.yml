@@ -1,0 +1,59 @@
+name: testes
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.9", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      # O painel não tem dependência de runtime; node entra só para o
+      # `node --check` do JS embutido no template, que é o gate que pega erro de
+      # sintaxe na página antes de ela ir para alguém.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - run: pip install pytest
+
+      - name: rodar os testes
+        run: pytest -q
+
+      - name: garantir que o gate do JS não foi pulado
+        run: |
+          pytest tests/test_template.py::test_o_javascript_do_template_compila -q \
+            | tee saida.txt
+          if grep -q "skipped" saida.txt; then
+            echo "::error::o node --check do template foi pulado — o gate não rodou"
+            exit 1
+          fi
+
+  segredos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Rede de segurança rasa e barata: o repositório não deve conter .env nem
+      # credencial literal. A conferência séria é o .gitignore; esta pega o dia
+      # em que alguém usar `git add -f`.
+      - name: nenhum .env versionado
+        run: |
+          if git ls-files | grep -E '(^|/)\.env$'; then
+            echo "::error::há um .env versionado"; exit 1
+          fi
+      - name: nenhuma senha literal
+        run: |
+          if git grep -nE 'ODOO_PASSWORD\s*=\s*["'"'"'][^"'"'"']+' -- ':!*.example'; then
+            echo "::error::ODOO_PASSWORD com valor literal no código"; exit 1
+          fi

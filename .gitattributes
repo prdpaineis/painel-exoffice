@@ -1,0 +1,3 @@
+# O repositório guarda LF; o checkout no Windows continua com CRLF.
+* text=auto eol=lf
+*.png binary

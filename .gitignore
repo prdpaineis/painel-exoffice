@@ -1,0 +1,21 @@
+# credenciais — nunca versionar
+.env
+.env.local
+*.env
+!.env.example
+
+# saída gerada (contém dados de cliente)
+out/
+
+# python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# editores / SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

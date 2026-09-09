@@ -1,0 +1,2 @@
+# O painel não tem dependência de runtime: só a biblioteca padrão do Python.
+# Este arquivo existe para deixar isso explícito e para o CI ter onde crescer.
