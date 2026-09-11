@@ -38,21 +38,32 @@ python main.py --env ../odoo-mmp.env     # credencial fora da árvore do reposit
 Prefira um **usuário de integração só-leitura** em vez da conta de uma pessoa: o MMP tem
 regras de visibilidade por empresa, e os números mudam se o login mudar.
 
-### O que nunca entra no repositório
+### O que entra e o que não entra no repositório
 
-| | Por quê |
-|---|---|
-| `.env`, `*.env` (menos `.env.example`) | credencial |
-| `out/` | a página e o `dados.json` trazem volumes reais do cliente |
+| | | Por quê |
+|---|---|---|
+| `.env`, `*.env` (menos `.env.example`) | **nunca** | credencial |
+| `out/painel-exoffice.html` | **entra** | é a página pronta para abrir; só leva agregado |
+| `out/dados.json` | não | repete o que já está na página e só serve para diff local |
 
-O workflow `segredos` no CI falha o build se um `.env` for versionado à força ou se
-aparecer `ODOO_PASSWORD` com valor literal no código. É rede de segurança rasa — quem
-protege de verdade é o `.gitignore`.
+A página versionada carrega os volumes do cliente (casos, taxas, nomes de projeto) — é por
+isso que o repositório tem de ser **privado**. Ela **não** carrega nada que identifique um
+caso: nenhum número de processo, de dossiê ou CPF. A lista de ids dos acordos existe só
+dentro do script, para conferência, e é retirada antes de o JSON ir para a página.
+
+**Ao regerar, faça commit da página nova.** Ela é saída, não fonte: se o template mudar e a
+página não for regerada, o repositório passa a mostrar uma versão que o código já não
+produz.
+
+O workflow `segredos` no CI falha o build se um `.env` for versionado à força, se
+aparecer `ODOO_PASSWORD` com valor literal no código, ou se a página versionada passar a
+conter número de processo, de dossiê ou CPF. É rede de segurança rasa — quem protege de
+verdade é o `.gitignore` e o `pop("ids")` no `main.py`.
 
 ## Uso
 
 ```bash
-python main.py --as-of 09/09/2026 --last-full-month 8
+python main.py --as-of 11/09/2026 --last-full-month 8
 ```
 
 | Opção | Para que serve |
@@ -64,24 +75,24 @@ python main.py --as-of 09/09/2026 --last-full-month 8
 | `--env` | arquivo com as credenciais. Padrão: `./.env`. |
 | `--no-check` | pula a conferência contra o servidor (não recomendado). |
 
-Saída em `out/`: `painel-exoffice.html` (a página) e `dados.json` (os dados, úteis para
-diff entre execuções).
+Saída em `out/`: `painel-exoffice.html` (a página, **versionada**) e `dados.json` (os
+dados, úteis para diff entre execuções, fora do git).
 
 **Ao virar o mês, suba o `--last-full-month`.** É a única coisa que muda de rotina.
 
 ### Conferência automática
 
 Antes de gravar, o script compara os totais do JSON com `search_count` feito no próprio
-servidor:
+servidor (saída real de 11/09/2026):
 
 ```
 Conferindo contra o servidor:
-  [ok] casos no recorte: 8467 no painel · 8467 no servidor
-  [ok] encerramentos: 1332 no painel · 1332 no servidor
-  [ok] sentenças: 2437 no painel · 2437 no servidor
-  [ok] sentenças por projeto × por mês: 2437 · 2437
+  [ok] casos no recorte: 8525 no painel · 8525 no servidor
+  [ok] encerramentos: 1383 no painel · 1383 no servidor
+  [ok] sentenças: 2461 no painel · 2461 no servidor
+  [ok] sentenças por projeto × por mês: 2461 · 2461
   [ok] acordos: 50 na série · 50 casos distintos
-  [ok] acórdãos: 278 no painel · 278 no servidor
+  [ok] acórdãos: 284 no painel · 284 no servidor
 ```
 
 A quarta linha não vai ao servidor: confere a quebra por projeto contra a quebra por mês
@@ -92,6 +103,9 @@ Se algum total divergir, a saída ainda é gravada mas o processo termina com c�
 dá para usar como gate no CI.
 
 ## O recorte
+
+> Os números citados daqui para baixo são um retrato de **11/09/2026**, o mesmo da
+> página versionada em `out/`. Eles envelhecem a cada regeração; a página é que vale.
 
 "Escritório externo" não é um projeto: é uma família de **11 registros** em
 `project.project` (`painel/config.py` → `PROJETOS_EXOFFICE`). Seis têm caso hoje; os outros
@@ -110,7 +124,7 @@ Duas ressalvas de leitura que valem para **todas** as quebras por projeto:
   retroativamente. Se um mês mudar de composição sem explicação (ago/26: Consignado cai de
   852 para 108 enquanto Indenizatórias sobe de 29 para 677), suspeite de reclassificação
   antes de suspeitar de mudança na demanda.
-* **Migração não é demanda.** 718 dos 8.467 casos vieram dos projetos *migrados*, 699 deles
+* **Migração não é demanda.** 718 dos 8.525 casos vieram dos projetos *migrados*, 699 deles
   em jan/26. Aquele mês tem 1.100 "entradas", das quais quase dois terços são carga de
   carteira. A página marca isso; a média móvel dos três últimos meses não pega o pico, mas
   qualquer comparação com janeiro pega.
@@ -150,7 +164,7 @@ sentenças com tipo informado. Homologação de acordo entra no denominador — 
 A definição fechada é a mesma do `painel-mmp` de propósito, para os dois conversarem — a
 abertura é adicional, não a substitui.
 
-O campo `exito_encerramento` do MMP existe, mas está **vazio nos 8.467 casos**; por isso o
+O campo `exito_encerramento` do MMP existe, mas está **vazio nos 8.525 casos**; por isso o
 painel usa a definição por sentença, que é a mesma do painel `painel-mmp`.
 
 A quebra por projeto traz o intervalo de Wilson a 95% e marca *amostra pequena* abaixo de
@@ -171,11 +185,11 @@ Parcialmente Procedente, Desfavorável. Mudança de tipo dentro da mesma classe 
 reversão.
 
 Recurso da parte contrária é defesa, não reversão: sai da taxa e aparece em bloco próprio,
-junto com os acórdãos sem `dossie_recurso` preenchido — que hoje são **59 de 278**. É a
+junto com os acórdãos sem `dossie_recurso` preenchido — que hoje são **60 de 284**. É a
 maior fragilidade do indicador neste recorte, e está escrito na página.
 
-O denominador é pequeno: dos 278 acórdãos, apenas **50** têm recurso nosso partindo de
-sentença desfavorável, e a reversão hoje é 12 desses 50. A página mostra a taxa **sempre
+O denominador é pequeno: dos 284 acórdãos, apenas **51** têm recurso nosso partindo de
+sentença desfavorável, e a reversão hoje é 13 desses 51. A página mostra a taxa **sempre
 com o intervalo de Wilson ao lado**, porque nesse volume a faixa é larga demais para
 sustentar meta ou comparação entre meses.
 

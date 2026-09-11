@@ -1,0 +1,933 @@
+<meta charset="utf-8">
+<title>Atuação no Escritório Externo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  color-scheme: light;
+  --ground:#f2efe8; --surface:#fffdf8; --surface-2:#f8f5ee; --surface-3:#ece7db;
+  --ink:#191713; --ink-2:#5c564a; --ink-3:#8c8474;
+  --line:#e2dbcc; --line-2:#cfc5b0;
+  --accent:#8a5a1e; --accent-soft:#f0e3cf; --accent-ink:#fffdf8;
+  --exito:#2f6b52; --exito-2:#5c9b7d; --exito-3:#9cc5b0;
+  --derrota:#a8402f; --derrota-2:#c9765f;
+  --acordo:#3a6ea5; --acordo-2:#7ba3c9;
+  --parcial:#c0862f;
+  --neutro:#9a9182;
+  --heat:47 60% 42%;            /* matiz do razão, em HSL para variar só o alfa */
+  --shadow:0 1px 2px rgba(40,30,14,.06), 0 6px 18px -12px rgba(40,30,14,.25);
+  --focus:#8a5a1e;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --ground:#14120e; --surface:#1d1a15; --surface-2:#242019; --surface-3:#2e2921;
+    --ink:#f2ede2; --ink-2:#b6ad9c; --ink-3:#8c8474;
+    --line:#332d24; --line-2:#463e31;
+    --accent:#d9a04a; --accent-soft:#33291a; --accent-ink:#14120e;
+    --exito:#68b791; --exito-2:#4a8e70; --exito-3:#2f6b52;
+    --derrota:#e08a75; --derrota-2:#b05a45;
+    --acordo:#7fa9d8; --acordo-2:#4d7aa8;
+    --parcial:#d9a04a;
+    --neutro:#7d7566;
+    --heat:40 55% 62%;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -14px rgba(0,0,0,.8);
+    --focus:#d9a04a;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --ground:#14120e; --surface:#1d1a15; --surface-2:#242019; --surface-3:#2e2921;
+  --ink:#f2ede2; --ink-2:#b6ad9c; --ink-3:#8c8474;
+  --line:#332d24; --line-2:#463e31;
+  --accent:#d9a04a; --accent-soft:#33291a; --accent-ink:#14120e;
+  --exito:#68b791; --exito-2:#4a8e70; --exito-3:#2f6b52;
+  --derrota:#e08a75; --derrota-2:#b05a45;
+  --acordo:#7fa9d8; --acordo-2:#4d7aa8;
+  --parcial:#d9a04a;
+  --neutro:#7d7566;
+  --heat:40 55% 62%;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -14px rgba(0,0,0,.8);
+  --focus:#d9a04a;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font:400 15px/1.55 Archivo, "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{margin:0; text-wrap:balance; font-family:Fraunces, Georgia, "Times New Roman", serif; font-weight:600; letter-spacing:-.01em}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--focus); outline-offset:2px; border-radius:3px}
+.num{font-family:"IBM Plex Mono", ui-monospace, Consolas, monospace; font-variant-numeric:tabular-nums}
+.eyebrow{
+  font:600 11px/1 "IBM Plex Mono", ui-monospace, monospace;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3);
+}
+
+/* ---------- cabeçalho ---------- */
+.topo{
+  border-bottom:1px solid var(--line); background:var(--surface);
+  position:sticky; top:0; z-index:20;
+}
+.topo-in{
+  max-width:1180px; margin:0 auto; padding:18px 22px 0;
+  display:flex; flex-wrap:wrap; align-items:flex-end; gap:10px 26px;
+}
+.topo h1{font-size:26px; line-height:1.15}
+.topo .sub{color:var(--ink-2); font-size:13.5px; margin-top:3px}
+.selo{
+  margin-left:auto; display:flex; gap:22px; align-items:flex-end;
+  padding-bottom:2px;
+}
+.selo div{text-align:right}
+.selo .v{font:600 19px/1 "IBM Plex Mono", monospace; font-variant-numeric:tabular-nums; display:block; margin-top:5px}
+
+/* ---------- abas ---------- */
+.abas{max-width:1180px; margin:0 auto; padding:14px 22px 0; display:flex; gap:2px; overflow-x:auto}
+.abas button{
+  appearance:none; border:0; background:none; cursor:pointer; white-space:nowrap;
+  font:500 14px/1 Archivo, sans-serif; color:var(--ink-2);
+  padding:11px 15px; border-bottom:2px solid transparent; margin-bottom:-1px;
+  border-radius:4px 4px 0 0;
+}
+.abas button:hover{color:var(--ink); background:var(--surface-2)}
+.abas button[aria-selected="true"]{color:var(--accent); border-bottom-color:var(--accent); font-weight:600}
+
+main{max-width:1180px; margin:0 auto; padding:26px 22px 70px}
+section[hidden]{display:none}
+.bloco{display:flex; flex-direction:column; gap:26px}
+
+/* ---------- faixa de indicadores ---------- */
+.faixa{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  border:1px solid var(--line); border-radius:8px; background:var(--surface);
+  overflow:hidden; box-shadow:var(--shadow);
+}
+.faixa > div{padding:15px 18px; border-right:1px solid var(--line)}
+.faixa > div:last-child{border-right:0}
+.faixa .v{
+  font:600 27px/1.05 "IBM Plex Mono", monospace; font-variant-numeric:tabular-nums;
+  margin-top:9px; display:block; letter-spacing:-.02em;
+}
+.faixa .nota{font-size:12px; color:var(--ink-3); margin-top:6px; display:block; line-height:1.4}
+.v.g{color:var(--exito)} .v.r{color:var(--derrota)} .v.b{color:var(--acordo)} .v.a{color:var(--accent)}
+
+/* ---------- painel de conteúdo ---------- */
+.card{
+  border:1px solid var(--line); border-radius:8px; background:var(--surface);
+  box-shadow:var(--shadow); overflow:hidden;
+}
+.card > header{padding:16px 18px 0}
+.card > header h2{font-size:18px}
+.card > header p{margin:7px 0 0; color:var(--ink-2); font-size:13.5px; max-width:68ch}
+.card .corpo{padding:16px 18px 18px}
+
+.legenda{display:flex; flex-wrap:wrap; gap:6px 16px; margin:14px 0 6px; font-size:12.5px; color:var(--ink-2)}
+.legenda span{display:inline-flex; align-items:center; gap:6px}
+.legenda i{width:11px; height:11px; border-radius:2px; display:inline-block; flex:none}
+
+.grafico{width:100%; height:auto; display:block; overflow:visible}
+.grafico text{font:400 11px "IBM Plex Mono", monospace; fill:var(--ink-3)}
+.grafico .rot-eixo{font-size:10.5px}
+.grafico .grade{stroke:var(--line); stroke-width:1}
+.grafico .destaque{font-weight:600; fill:var(--ink)}
+
+/* ---------- razão (a tabela mês × categoria) ---------- */
+.rolagem{overflow-x:auto; margin-top:4px; border-top:1px solid var(--line)}
+table.razao{border-collapse:collapse; width:100%; font-size:13px; min-width:520px}
+table.razao th, table.razao td{padding:7px 11px; text-align:right; white-space:nowrap}
+table.razao thead th{
+  font:600 10.5px/1.3 "IBM Plex Mono", monospace; letter-spacing:.07em; text-transform:uppercase;
+  color:var(--ink-3); border-bottom:1px solid var(--line-2); vertical-align:bottom;
+  position:sticky; top:0; background:var(--surface);
+}
+table.razao th.mes, table.razao td.mes{
+  text-align:left; font-weight:500; color:var(--ink);
+  position:sticky; left:0; background:var(--surface); z-index:1;
+}
+table.razao tbody td{font-family:"IBM Plex Mono", monospace; font-variant-numeric:tabular-nums; color:var(--ink-2)}
+table.razao tbody tr:hover td{background:var(--surface-2)}
+table.razao tbody tr:hover td.mes{background:var(--surface-2)}
+table.razao tr.parcial td.mes::after{
+  content:"parcial"; font:500 9.5px "IBM Plex Mono", monospace; letter-spacing:.06em;
+  color:var(--accent); background:var(--accent-soft); padding:2px 5px; border-radius:3px; margin-left:8px;
+}
+table.razao tfoot td{
+  border-top:1px solid var(--line-2); font-weight:600; color:var(--ink);
+  font-family:"IBM Plex Mono", monospace; font-variant-numeric:tabular-nums;
+}
+table.razao tfoot td.mes{font-family:Archivo, sans-serif}
+td.zero{color:var(--ink-3); opacity:.45}
+td.taxa{font-weight:600; color:var(--ink)}
+
+/* ---------- matriz 2×2 da reversão ---------- */
+.matriz{display:grid; grid-template-columns:auto 1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:6px; overflow:hidden; max-width:520px}
+.matriz > *{background:var(--surface); padding:13px 15px}
+.matriz .cab{font:600 10.5px/1.3 "IBM Plex Mono", monospace; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); background:var(--surface-2)}
+.matriz .cel b{display:block; font:600 22px/1 "IBM Plex Mono", monospace; font-variant-numeric:tabular-nums; margin-bottom:5px}
+.matriz .cel span{font-size:12px; color:var(--ink-2)}
+.matriz .cel.chave{background:var(--accent-soft)}
+
+/* ---------- cartões dos projetos paralelos ---------- */
+.paralelos{display:grid; grid-template-columns:repeat(auto-fit,minmax(268px,1fr)); gap:16px; align-items:start}
+.par{border:1px solid var(--line); border-radius:8px; background:var(--surface); padding:16px 18px; box-shadow:var(--shadow)}
+.par.off{background:var(--surface-2); box-shadow:none; border-style:dashed}
+.par h3{font-size:16px; margin-bottom:4px}
+.par .estado{
+  display:inline-block; font:600 10px/1 "IBM Plex Mono", monospace; letter-spacing:.1em;
+  text-transform:uppercase; padding:4px 7px; border-radius:3px; margin-bottom:11px;
+}
+.par .estado.ativo{background:var(--exito); color:var(--surface)}
+.par .estado.espera{background:var(--surface-3); color:var(--ink-2)}
+.par p{margin:0 0 10px; font-size:13px; color:var(--ink-2); line-height:1.5}
+.par p:last-child{margin-bottom:0}
+.par dl{margin:12px 0 0; display:grid; grid-template-columns:1fr auto; gap:7px 14px; font-size:13px}
+.par dt{color:var(--ink-2)}
+.par dd{margin:0; font-family:"IBM Plex Mono", monospace; font-variant-numeric:tabular-nums; font-weight:600}
+.par code{font:400 12px "IBM Plex Mono", monospace; background:var(--surface-3); padding:1.5px 5px; border-radius:3px; color:var(--ink)}
+
+/* ---------- avisos ---------- */
+.aviso{
+  border-left:3px solid var(--accent); background:var(--accent-soft);
+  padding:12px 16px; border-radius:0 6px 6px 0; font-size:13.5px; color:var(--ink);
+}
+.aviso b{font-weight:600}
+.aviso p{margin:0 0 8px} .aviso p:last-child{margin:0}
+.nota-rodape{font-size:12.5px; color:var(--ink-3); line-height:1.55; max-width:76ch}
+.nota-rodape code{font-family:"IBM Plex Mono", monospace; font-size:11.5px}
+
+footer{
+  max-width:1180px; margin:0 auto; padding:0 22px 60px;
+  border-top:1px solid var(--line); padding-top:20px; color:var(--ink-3); font-size:12.5px; line-height:1.6;
+}
+footer b{color:var(--ink-2); font-weight:600}
+
+@media (prefers-reduced-motion: no-preference){
+  .grafico rect, .grafico circle{transition:opacity .12s ease}
+}
+@media (max-width:640px){
+  .topo h1{font-size:21px}
+  .selo{margin-left:0; width:100%; gap:18px; justify-content:flex-start}
+  .selo div{text-align:left}
+  main{padding:20px 14px 60px}
+  .topo-in,.abas{padding-left:14px; padding-right:14px}
+}
+</style>
+
+<header class="topo">
+  <div class="topo-in">
+    <div>
+      <h1>Atuação no Escritório Externo</h1>
+      <p class="sub">Santander · entradas, encerramentos, acordo, êxito e reversão, mês a mês</p>
+    </div>
+    <div class="selo">
+      <div><span class="eyebrow">Casos</span><span class="v num" id="selo-casos">—</span></div>
+      <div><span class="eyebrow">Posição</span><span class="v num" id="selo-data">—</span></div>
+    </div>
+  </div>
+  <nav class="abas" id="abas" role="tablist" aria-label="Seções do painel"></nav>
+</header>
+
+<main>
+  <section id="sec-entradas" role="tabpanel" class="bloco"></section>
+  <section id="sec-encerramentos" role="tabpanel" class="bloco" hidden></section>
+  <section id="sec-exito" role="tabpanel" class="bloco" hidden></section>
+  <section id="sec-reversao" role="tabpanel" class="bloco" hidden></section>
+  <section id="sec-paralelos" role="tabpanel" class="bloco" hidden></section>
+</main>
+
+<footer>
+  <p><b>De onde vem cada número.</b> Tudo sai do Odoo do MMP por consulta agregada, somente leitura,
+  restrito aos 11 projetos da família <i>Escritório externo</i>. <b>Entrada</b> é o
+  <code>create_date</code> do caso — <code>data_entrada_cadastro</code> está vazio em 100% deste
+  recorte, então não confunda com data de distribuição. <b>Encerramento</b> é
+  <code>data_encerramento</code>, com o motivo em <code>motivo_encerramento_id</code>.
+  <b>Acordo</b> é a ação <i>Protocolar minuta</i> concluída, contada por caso distinto.
+  <b>Êxito</b> é Improcedente + Extinção sobre as sentenças com tipo informado — a mesma definição
+  do painel <i>Êxito e Reversão</i>, para os dois conversarem.
+  <b>Reversão</b> é a transição da sentença de origem para o resultado do acórdão, só nos casos em
+  que o recurso foi nosso.</p>
+  <p style="margin-top:12px">Cada geração confere os totais contra <code>search_count</code> feito no
+  próprio servidor antes de gravar a página.</p>
+</footer>
+
+<script id="dados" type="application/json">{"as_of":"11/09/2026","ano":2026,"ultimo_mes_fechado":8,"janela_inicio":"2025-10","min_amostra":10,"projetos":{"427":"Consignado","428":"Revisionais","429":"Cautelar - Exibição","487":"Migrados","488":"Cessão de Crédito","489":"Indenizatória","490":"Migrados - Cautelar - Exibição","491":"Migrados - Revisionais","492":"Migrados - Indenizatória","493":"Migrados - Consignado","502":"Indenizatórias"},"migrados":[487,490,491,492,493],"total_casos":8525,"entradas":{"campo":"create_date","serie":{"2018-04":{"Revisionais":1},"2025-10":{"Consignado (migrados)":16},"2025-11":{"Cautelar - Exibição":4,"Consignado":258,"Consignado (migrados)":3,"Revisionais":196},"2025-12":{"Cautelar - Exibição":2,"Consignado":326,"Revisionais":213},"2026-01":{"Cautelar - Exibição":3,"Consignado":207,"Consignado (migrados)":364,"Revisionais (migrados)":335,"Revisionais":191},"2026-02":{"Consignado":192,"Revisionais":189},"2026-03":{"Cessão de Crédito":2,"Consignado":274,"Revisionais":218},"2026-04":{"Cessão de Crédito":2,"Consignado":230,"Revisionais":177},"2026-05":{"Cessão de Crédito":6,"Consignado":398,"Revisionais":446},"2026-06":{"Cessão de Crédito":7,"Consignado":696,"Indenizatórias":57,"Revisionais":387},"2026-07":{"Cessão de Crédito":8,"Consignado":852,"Indenizatórias":29,"Revisionais":470},"2026-08":{"Cessão de Crédito":4,"Consignado":108,"Indenizatórias":677,"Revisionais":558},"2026-09":{"Indenizatórias":259,"Revisionais":160}}},"encerramentos":{"motivo":{"2025-11":{"Extinção":1},"2025-12":{"Extinção":1},"2026-01":{"Arquivamento":2,"Extinção":15},"2026-02":{"Arquivamento":2,"Acordo":2,"Procedência":1,"Improcedência":17,"Extinção":109},"2026-03":{"Acordo":3,"Improcedência":33,"Extinção":62},"2026-04":{"Acordo":10,"Procedência":1,"Improcedência":26,"Extinção":47},"2026-05":{"Arquivamento":1,"Acordo":6,"Procedência":9,"Improcedência":47,"Extinção":80},"2026-06":{"Acordo":6,"Procedência":13,"Improcedência":38,"Extinção":68},"2026-07":{"Acordo":7,"Procedência":10,"Improcedência":94,"Extinção":309},"2026-08":{"Acordo":15,"Procedência":10,"Improcedência":83,"Extinção":150},"2026-09":{"Acordo":5,"Procedência":10,"Improcedência":28,"Extinção":62}},"projeto":{"2025-11":{"Revisionais":1},"2025-12":{"Revisionais":1},"2026-01":{"Cautelar - Exibição":1,"Consignado":8,"Revisionais":8},"2026-02":{"Cautelar - Exibição":2,"Consignado":29,"Consignado (migrados)":31,"Revisionais (migrados)":43,"Revisionais":26},"2026-03":{"Cautelar - Exibição":1,"Consignado":43,"Consignado (migrados)":18,"Revisionais (migrados)":6,"Revisionais":30},"2026-04":{"Cautelar - Exibição":2,"Consignado":46,"Consignado (migrados)":7,"Revisionais (migrados)":6,"Revisionais":23},"2026-05":{"Consignado":66,"Consignado (migrados)":13,"Revisionais (migrados)":15,"Revisionais":49},"2026-06":{"Consignado":53,"Consignado (migrados)":11,"Revisionais (migrados)":6,"Revisionais":55},"2026-07":{"Cessão de Crédito":3,"Consignado":163,"Consignado (migrados)":17,"Revisionais (migrados)":29,"Revisionais":208},"2026-08":{"Consignado":115,"Consignado (migrados)":9,"Revisionais (migrados)":17,"Indenizatórias":10,"Revisionais":107},"2026-09":{"Cessão de Crédito":1,"Consignado":59,"Consignado (migrados)":3,"Revisionais (migrados)":4,"Indenizatórias":8,"Revisionais":30}}},"acordos":{"linhas":55,"casos":50,"serie":{"2026-01":2,"2026-02":2,"2026-03":9,"2026-04":7,"2026-05":6,"2026-06":4,"2026-07":6,"2026-08":13,"2026-09":1}},"sentencas":{"serie":{"2015-02":{"Procedente":1},"2020-11":{"Improcedente":1},"2022-09":{"Improcedente":1},"2023-08":{"Improcedente":1},"2023-09":{"Improcedente":1},"2023-10":{"Improcedente":1,"Parcialmente Procedente":3},"2024-04":{"Procedente":1},"2024-06":{"Procedente":1},"2025-01":{"Extinção sem Julgamento do Mérito":1},"2025-02":{"Improcedente":1},"2025-06":{"Improcedente":1},"2025-07":{"Improcedente":1,"Procedente":1,"Extinção sem Julgamento do Mérito":1},"2025-08":{"Parcialmente Procedente":1},"2025-09":{"Improcedente":1,"Extinção sem Julgamento do Mérito":1,"Parcialmente Procedente":2},"2025-10":{"Improcedente":2,"Procedente":1,"Extinção sem Julgamento do Mérito":8},"2025-11":{"Procedente":1,"Extinção sem Julgamento do Mérito":19},"2025-12":{"Improcedente":7,"Extinção sem Julgamento do Mérito":21,"Parcialmente Procedente":9},"2026-01":{"Improcedente":26,"Procedente":5,"Extinção sem Julgamento do Mérito":41,"Parcialmente Procedente":3,"Homologação de Acordo":1},"2026-02":{"Improcedente":48,"Procedente":8,"Extinção sem Julgamento do Mérito":72,"Parcialmente Procedente":23,"Homologação de Acordo":1},"2026-03":{"Improcedente":96,"Procedente":33,"Extinção sem Julgamento do Mérito":119,"Parcialmente Procedente":12,"Homologação de Acordo":1,"(sem tipo)":1},"2026-04":{"Improcedente":66,"Procedente":40,"Extinção sem Julgamento do Mérito":92,"Parcialmente Procedente":19},"2026-05":{"Improcedente":107,"Procedente":36,"Extinção sem Julgamento do Mérito":126,"Parcialmente Procedente":18,"Homologação de Acordo":1,"(sem tipo)":2},"2026-06":{"Improcedente":105,"Procedente":24,"Extinção sem Julgamento do Mérito":161,"Parcialmente Procedente":26,"Homologação de Acordo":1,"(sem tipo)":1},"2026-07":{"Improcedente":156,"Procedente":53,"Extinção sem Julgamento do Mérito":200,"Parcialmente Procedente":35,"Homologação de Acordo":1},"2026-08":{"Improcedente":166,"Procedente":42,"Extinção sem Julgamento do Mérito":218,"Parcialmente Procedente":57,"Homologação de Acordo":6,"Extinção da Execução":1},"2026-09":{"Improcedente":48,"Procedente":11,"Extinção sem Julgamento do Mérito":51,"Parcialmente Procedente":10},"2026-10":{"Improcedente":1}},"projeto":{"Cautelar - Exibição":{"Improcedente":1,"Procedente":1,"Extinção sem Julgamento do Mérito":4,"Parcialmente Procedente":1},"Cessão de Crédito":{"Improcedente":1,"Extinção sem Julgamento do Mérito":6},"Consignado":{"Improcedente":370,"Procedente":156,"Extinção sem Julgamento do Mérito":493,"Parcialmente Procedente":92,"Homologação de Acordo":9,"(sem tipo)":2},"Consignado (migrados)":{"Improcedente":50,"Procedente":29,"Extinção sem Julgamento do Mérito":46,"Parcialmente Procedente":21,"Homologação de Acordo":2},"Indenizatórias":{"Improcedente":16,"Procedente":3,"Extinção sem Julgamento do Mérito":37,"Parcialmente Procedente":2},"Revisionais":{"Improcedente":319,"Procedente":54,"Extinção sem Julgamento do Mérito":508,"Parcialmente Procedente":85,"Homologação de Acordo":1,"Extinção da Execução":1},"Revisionais (migrados)":{"Improcedente":80,"Procedente":15,"Extinção sem Julgamento do Mérito":37,"Parcialmente Procedente":17,"(sem tipo)":2}}},"reversao":{"serie":{"2026-03":{"contraria:FF":7,"vazio:FF":3,"nosso:DD":4,"vazio:DD":2,"vazio:X":1},"2026-04":{"contraria:FF":5,"vazio:FF":2,"contraria:FD":1,"nosso:DD":4,"vazio:DD":2},"2026-05":{"contraria:FF":13,"vazio:FF":5,"contraria:FD":4,"contraria:DD":1,"nosso:DD":3,"nosso:DF":1},"2026-06":{"contraria:FF":23,"vazio:FF":4,"contraria:FD":3,"vazio:FD":1,"contraria:DD":3,"nosso:DD":4,"nosso:DF":1},"2026-07":{"contraria:FF":33,"vazio:FF":13,"contraria:FD":6,"vazio:FD":2,"nosso:DF":4,"nosso:DD":13,"contraria:DD":6,"vazio:DD":4},"2026-08":{"contraria:FF":38,"vazio:FF":11,"contraria:FD":7,"vazio:FD":2,"nosso:DF":6,"nosso:DD":8,"contraria:DD":4},"2026-09":{"contraria:FF":15,"vazio:FF":6,"contraria:FD":4,"vazio:FD":1,"nosso:DF":1,"nosso:DD":2,"vazio:DD":1}}},"paralelos":{"alteracao_objeto":{"estado":{"Cancelada":1059,"Concluída":299,"Pendente":126},"serie":{"2026-01":{"Cancelada":2},"2026-02":{"Cancelada":27},"2026-03":{"Cancelada":155,"Concluída":48},"2026-04":{"Cancelada":3,"Concluída":232},"2026-05":{"Cancelada":305,"Concluída":15},"2026-06":{"Cancelada":230},"2026-07":{"Cancelada":332,"Concluída":4,"Pendente":4},"2026-08":{"Cancelada":5,"Pendente":103},"2026-09":{"Pendente":19}}},"causa_raiz":{"preenchidos":0,"distribuicao":{"(vazio)":8525}},"decisor":{"preenchidos":0},"motivo_vitoria_derrota":{"instrumentado":false},"litispendencia":{"instrumentado":false}}}</script>
+<script>
+"use strict";
+const D = JSON.parse(document.getElementById("dados").textContent);
+
+/* ---------------- utilidades ---------------- */
+const MES_PT = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+const rotuloMes = k => { const [a,m] = k.split("-"); return MES_PT[+m-1] + "/" + a.slice(2); };
+const n = v => (v||0).toLocaleString("pt-BR");
+const pct = (v, casas=1) => (v*100).toFixed(casas).replace(".", ",") + "%";
+const el = (tag, attrs={}, ...filhos) => {
+  const e = document.createElement(tag);
+  for (const [k,v] of Object.entries(attrs)) {
+    if (k === "class") e.className = v;
+    else if (k === "html") e.innerHTML = v;
+    else if (v !== null && v !== undefined) e.setAttribute(k, v);
+  }
+  for (const f of filhos.flat()) if (f !== null && f !== undefined) e.append(f);
+  return e;
+};
+
+/* Intervalo de Wilson a 95%. Com 3 ou 4 casos a faixa passa de 40 pontos e ali
+   não há conclusão possível, só ruído — por isso a página mostra a faixa junto
+   com a taxa, nunca a taxa sozinha. */
+function wilson(k, total, z=1.96){
+  if (!total) return null;
+  const p = k/total, d = 1 + z*z/total;
+  const centro = p + z*z/(2*total);
+  const margem = z * Math.sqrt(p*(1-p)/total + z*z/(4*total*total));
+  return [Math.max(0,(centro-margem)/d), Math.min(1,(centro+margem)/d)];
+}
+
+const MES_PARCIAL = String(D.ano) + "-" + String(D.ultimo_mes_fechado+1).padStart(2,"0");
+const ehParcial = k => k >= MES_PARCIAL;
+
+/* Meses dentro da janela do programa; o que veio antes vira uma linha só.
+   São processos antigos que entraram depois — não é erro, e esticar o eixo
+   até 2015 por causa de uma sentença deixaria o gráfico inteiro ilegível. */
+function janela(serie){
+  const dentro = [], antes = {};
+  for (const [mes, valores] of Object.entries(serie)){
+    if (mes >= D.janela_inicio) dentro.push(mes);
+    else for (const [k,v] of Object.entries(valores)) antes[k] = (antes[k]||0) + v;
+  }
+  dentro.sort();
+  return { meses: dentro, antes, temAntes: Object.keys(antes).length > 0 };
+}
+const somaAntes = a => Object.values(a).reduce((s,v)=>s+v,0);
+
+/* Categorias ordenadas por volume total, para a legenda e as pilhas seguirem
+   a mesma ordem em todo lugar. */
+function categorias(serie, ordemFixa){
+  const total = {};
+  for (const valores of Object.values(serie))
+    for (const [k,v] of Object.entries(valores)) total[k] = (total[k]||0) + v;
+  const chaves = Object.keys(total);
+  if (ordemFixa){
+    chaves.sort((a,b) => {
+      const ia = ordemFixa.indexOf(a), ib = ordemFixa.indexOf(b);
+      if (ia !== -1 && ib !== -1) return ia - ib;
+      if (ia !== -1) return -1;
+      if (ib !== -1) return 1;
+      return total[b] - total[a];
+    });
+  } else chaves.sort((a,b) => total[b] - total[a]);
+  return { chaves, total };
+}
+
+/* Paleta. Semântica primeiro (verde = êxito, terracota = derrota, azul =
+   acordo); o resto puxa uma sequência quieta em latão e azul, que são as
+   cores da página. */
+const COR_TIPO = {
+  "Improcedente":"var(--exito)",
+  "Extinção sem Julgamento do Mérito":"var(--exito-2)",
+  "Extinção da Execução":"var(--exito-3)",
+  "Favorável":"var(--exito-3)",
+  "Homologação de Acordo":"var(--acordo)",
+  "Parcialmente Procedente":"var(--parcial)",
+  "Procedente":"var(--derrota)",
+  "Desfavorável":"var(--derrota-2)",
+  "(sem tipo)":"var(--neutro)",
+  "Improcedência":"var(--exito)",
+  "Extinção":"var(--exito-2)",
+  "Acordo":"var(--acordo)",
+  "Procedência":"var(--derrota)",
+  "Arquivamento":"var(--neutro)",
+  "(sem motivo)":"var(--neutro)",
+  "Concluída":"var(--exito)",
+  "Pendente":"var(--parcial)",
+  "Cancelada":"var(--neutro)"
+};
+const SEQ = ["var(--accent)","var(--acordo)","var(--exito)","var(--parcial)","var(--acordo-2)","var(--exito-2)","var(--derrota-2)","var(--neutro)"];
+function paleta(chaves){
+  const mapa = {}; let i = 0;
+  for (const c of chaves) mapa[c] = COR_TIPO[c] || SEQ[i++ % SEQ.length];
+  return mapa;
+}
+
+/* ---------------- gráficos (SVG puro, sem biblioteca) ----------------
+   As cores entram por `style="fill:var(--…)"` e não por atributo, para que a
+   troca de tema no CSS repinte o gráfico sem redesenhar nada. */
+const NS = "http://www.w3.org/2000/svg";
+const titulo = texto => { const t = document.createElementNS(NS,"title"); t.textContent = texto; return t; };
+const svgEl = (tag, attrs={}) => {
+  const e = document.createElementNS(NS, tag);
+  for (const [k,v] of Object.entries(attrs)) if (v !== null && v !== undefined) e.setAttribute(k, v);
+  return e;
+};
+
+function colunasEmpilhadas(meses, serie, chaves, cores, opts={}){
+  const L=52, R=14, T=14, B=30, W=920, H=opts.altura||280;
+  const larg = W-L-R, alt = H-T-B;
+  const totais = meses.map(m => chaves.reduce((s,c)=>s+((serie[m]||{})[c]||0),0));
+  const teto = Math.max(1, ...totais);
+  const passo = larg/Math.max(1,meses.length);
+  const barra = Math.min(46, passo*0.68);
+  const escala = v => v/teto*alt;
+  const svg = svgEl("svg", {class:"grafico", viewBox:`0 0 ${W} ${H}`, role:"img",
+                            "aria-label":opts.descricao||"gráfico de colunas empilhadas"});
+
+  const ticks = 4;
+  for (let i=0;i<=ticks;i++){
+    const v = teto*i/ticks, y = T+alt-escala(v);
+    svg.append(svgEl("line",{class:"grade", x1:L, x2:W-R, y1:y, y2:y, opacity:i?0.65:1}));
+    const t = svgEl("text",{x:L-9, y:y+3.5, "text-anchor":"end"}); t.textContent = n(Math.round(v)); svg.append(t);
+  }
+  meses.forEach((m,i)=>{
+    const x = L + passo*i + (passo-barra)/2;
+    let y = T+alt;
+    for (const c of chaves){
+      const v = (serie[m]||{})[c]||0; if (!v) continue;
+      const h = escala(v); y -= h;
+      const r = svgEl("rect",{x, y, width:barra, height:Math.max(1,h), rx:1.5});
+      r.setAttribute("style","fill:"+cores[c]+(ehParcial(m)?";opacity:.55":""));
+      r.append(titulo(`${rotuloMes(m)} · ${c}: ${n(v)}`));
+      svg.append(r);
+    }
+    const tot = svgEl("text",{x:x+barra/2, y:T+alt-escala(totais[i])-7, "text-anchor":"middle", class:"destaque"});
+    tot.textContent = n(totais[i]); svg.append(tot);
+    const rot = svgEl("text",{x:x+barra/2, y:H-11, "text-anchor":"middle", class:"rot-eixo"});
+    rot.textContent = rotuloMes(m); svg.append(rot);
+  });
+  return svg;
+}
+
+function barrasComLinha(meses, volumes, taxas, opts={}){
+  const L=52, R=52, T=20, B=30, W=920, H=opts.altura||270;
+  const larg = W-L-R, alt = H-T-B;
+  const teto = Math.max(1, ...volumes);
+  const passo = larg/Math.max(1,meses.length);
+  const barra = Math.min(44, passo*0.62);
+  const svg = svgEl("svg",{class:"grafico", viewBox:`0 0 ${W} ${H}`, role:"img",
+                           "aria-label":opts.descricao||"volume por mês com a taxa sobreposta"});
+  for (let i=0;i<=4;i++){
+    const y = T+alt-alt*i/4;
+    svg.append(svgEl("line",{class:"grade", x1:L, x2:W-R, y1:y, y2:y, opacity:i?0.65:1}));
+    const e = svgEl("text",{x:L-9, y:y+3.5, "text-anchor":"end"}); e.textContent = n(Math.round(teto*i/4)); svg.append(e);
+    const d = svgEl("text",{x:W-R+9, y:y+3.5, "text-anchor":"start"}); d.textContent = (25*i)+"%"; svg.append(d);
+  }
+  meses.forEach((m,i)=>{
+    const x = L + passo*i + (passo-barra)/2, h = volumes[i]/teto*alt;
+    const r = svgEl("rect",{x, y:T+alt-h, width:barra, height:Math.max(1,h), rx:1.5});
+    r.setAttribute("style","fill:var(--surface-3)"+(ehParcial(m)?";opacity:.6":""));
+    r.append(titulo(`${rotuloMes(m)}: ${n(volumes[i])} ${opts.unidade||""}`.trim()));
+    svg.append(r);
+    const rot = svgEl("text",{x:x+barra/2, y:H-11, "text-anchor":"middle", class:"rot-eixo"});
+    rot.textContent = rotuloMes(m); svg.append(rot);
+  });
+  const pontos = meses.map((m,i)=> taxas[i]===null ? null
+    : [L + passo*i + passo/2, T+alt-Math.min(1,taxas[i])*alt]);
+  const traco = pontos.filter(Boolean).map((p,i)=> (i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join(" ");
+  if (traco){
+    const linha = svgEl("path",{d:traco, fill:"none", "stroke-width":2.25, "stroke-linejoin":"round", "stroke-linecap":"round"});
+    linha.setAttribute("style","stroke:"+(opts.cor||"var(--accent)"));
+    svg.append(linha);
+  }
+  pontos.forEach((p,i)=>{
+    if (!p) return;
+    const c = svgEl("circle",{cx:p[0], cy:p[1], r: i===pontos.length-1 ? 5 : 3.5,
+                              stroke:"var(--surface)", "stroke-width":2});
+    c.setAttribute("style","fill:"+(opts.cor||"var(--accent)"));
+    c.append(titulo(`${rotuloMes(meses[i])}: ${pct(taxas[i])}`));
+    svg.append(c);
+    const t = svgEl("text",{x:p[0], y:p[1]-11, "text-anchor":"middle", class:"destaque"});
+    t.textContent = pct(taxas[i],0); svg.append(t);
+  });
+  return svg;
+}
+
+/* ---------------- razão: a tabela mês × categoria ---------------- */
+function razao(meses, serie, chaves, opts={}){
+  const linhas = [];
+  const cabecalho = el("tr", {}, el("th",{class:"mes", scope:"col"},"Mês"),
+    ...chaves.map(c => el("th",{scope:"col"}, c)),
+    opts.semTotal ? null : el("th",{scope:"col"},"Total"),
+    ...(opts.extras||[]).map(x => el("th",{scope:"col"}, x.titulo)));
+
+  const somas = {}; let somaGeral = 0;
+  for (const m of meses){
+    const valores = serie[m] || {};
+    const total = chaves.reduce((s,c)=>s+(valores[c]||0),0);
+    somaGeral += total;
+    const tr = el("tr", ehParcial(m) ? {class:"parcial"} : {}, el("td",{class:"mes"}, rotuloMes(m)));
+    for (const c of chaves){
+      const v = valores[c]||0; somas[c] = (somas[c]||0)+v;
+      tr.append(el("td", v ? {} : {class:"zero"}, n(v)));
+    }
+    if (!opts.semTotal) tr.append(el("td",{class:"taxa"}, n(total)));
+    for (const x of opts.extras||[]) tr.append(el("td",{class:"taxa"}, x.valor(m, valores, total)));
+    linhas.push(tr);
+  }
+  const tfoot = el("tr", {}, el("td",{class:"mes"}, opts.rotuloTotal||"No período"),
+    ...chaves.map(c => el("td",{}, n(somas[c]||0))),
+    opts.semTotal ? null : el("td",{}, n(somaGeral)),
+    ...(opts.extras||[]).map(x => el("td",{}, x.rodape ? x.rodape(somas, somaGeral) : "")));
+
+  return el("div",{class:"rolagem"},
+    el("table",{class:"razao"},
+      el("thead",{}, cabecalho),
+      el("tbody",{}, linhas),
+      el("tfoot",{}, tfoot)));
+}
+
+function legenda(chaves, cores){
+  return el("div",{class:"legenda"},
+    chaves.map(c => el("span",{}, el("i",{style:"background:"+cores[c]}), c)));
+}
+function cartao(titulo, texto, ...corpo){
+  return el("div",{class:"card"},
+    el("header",{}, el("h2",{},titulo), texto ? el("p",{html:texto}) : null),
+    el("div",{class:"corpo"}, corpo));
+}
+function faixa(itens){
+  return el("div",{class:"faixa"},
+    itens.map(i => el("div",{},
+      el("span",{class:"eyebrow"}, i.rotulo),
+      el("span",{class:"v num "+(i.tom||"")}, i.valor),
+      i.nota ? el("span",{class:"nota", html:i.nota}) : null)));
+}
+
+/* =================== 1. ENTRADAS =================== */
+function montarEntradas(){
+  const {meses, antes, temAntes} = janela(D.entradas.serie);
+  const {chaves, total} = categorias(D.entradas.serie);
+  const cores = paleta(chaves);
+  const fechados = meses.filter(m => !ehParcial(m));
+  const noAno = meses.filter(m => m.startsWith(String(D.ano)) && !ehParcial(m));
+  const somaNoAno = noAno.reduce((s,m)=>s+Object.values(D.entradas.serie[m]).reduce((a,b)=>a+b,0),0);
+  const ehMigrado = c => c.includes("(migrados)");
+  const somaMes = (m, filtro) => Object.entries(D.entradas.serie[m]||{})
+    .reduce((s,[c,v]) => s + (filtro(c) ? v : 0), 0);
+  const totalMigrados = meses.reduce((s,m) => s + somaMes(m, ehMigrado), 0);
+  /* O mês em que a migração entrou não é um mês de demanda: é uma carga. Separar
+     isso é a diferença entre "cresceu" e "carregaram uma carteira naquele dia". */
+  const mesDaCarga = meses.reduce((pior,m) =>
+    somaMes(m, ehMigrado) > somaMes(pior, ehMigrado) ? m : pior, meses[0]);
+  const ultimos3 = fechados.slice(-3);
+  const media3 = ultimos3.reduce((s,m)=>s+Object.values(D.entradas.serie[m]).reduce((a,b)=>a+b,0),0)/Math.max(1,ultimos3.length);
+
+  const sec = document.getElementById("sec-entradas");
+  sec.append(
+    faixa([
+      {rotulo:"Casos no recorte", valor:n(D.total_casos), tom:"a",
+       nota:`${chaves.length} projetos com caso, de 11 na família`},
+      {rotulo:`Entradas em ${D.ano}`, valor:n(somaNoAno),
+       nota:"até o último mês fechado"},
+      {rotulo:"Média dos 3 últimos", valor:n(Math.round(media3)),
+       nota:ultimos3.map(rotuloMes).join(" · ")},
+      {rotulo:"Vindos de migração", valor:n(totalMigrados),
+       nota: totalMigrados ? `${pct(totalMigrados/Math.max(1,D.total_casos),1)} do recorte, quase todos em ${rotuloMes(mesDaCarga)}` : "nenhum"}
+    ]),
+    totalMigrados ? el("div",{class:"aviso"},
+      el("p",{html:`<b>${rotuloMes(mesDaCarga)} não é um mês de demanda.</b> ${n(somaMes(mesDaCarga, ehMigrado))} dos ${n(somaMes(mesDaCarga, ()=>true))} casos daquele mês vieram dos projetos <i>migrados</i> — é uma carga de carteira, não entrada nova. No gráfico o pico lê como crescimento; são as faixas marcadas <i>(migrados)</i> na legenda.`})) : null,
+    cartao("Entradas mês a mês, por projeto do caso",
+      "Casos criados no Odoo. <code>data_entrada_cadastro</code> está vazio em todo o recorte, então a entrada é o <code>create_date</code> — não é a data de distribuição do processo. A cor é o projeto <b>que o caso tem hoje</b>, não o que tinha ao entrar: caso reclassificado troca de faixa retroativamente.",
+      legenda(chaves, cores),
+      colunasEmpilhadas(meses, D.entradas.serie, chaves, cores,
+        {descricao:"entradas por mês, empilhadas por projeto"}),
+      razao(meses, D.entradas.serie, chaves,
+        {rotuloTotal: temAntes ? `Na janela (+ ${n(somaAntes(antes))} antes)` : "No período"}),
+      temAntes ? el("p",{class:"nota-rodape", style:"padding-top:14px"},
+        `${n(somaAntes(antes))} caso(s) foram criados antes de ${rotuloMes(D.janela_inicio)} e estão no total do recorte, mas fora do eixo — são processos antigos que entraram no programa depois.`) : null
+    )
+  );
+}
+
+/* =================== 2. ENCERRAMENTOS E ACORDO =================== */
+function montarEncerramentos(){
+  const serieMotivo = D.encerramentos.motivo;
+  const {meses} = janela(serieMotivo);
+  const ORDEM = ["Improcedência","Extinção","Acordo","Procedência","Arquivamento"];
+  const {chaves, total} = categorias(serieMotivo, ORDEM);
+  const cores = paleta(chaves);
+  const totalEnc = Object.values(total).reduce((a,b)=>a+b,0);
+  const acordosPorMotivo = total["Acordo"] || 0;
+  /* Duas contas do mesmo fato, com confiabilidades diferentes:
+     - "Encerrado por acordo" vem de `data_encerramento` + motivo Acordo. A data é
+       do fato e serve para o eixo do tempo.
+     - "Minuta protocolada" é a definição pedida (ação Protocolar minuta concluída),
+       mas o único carimbo disponível é o `create_date` da linha — a ABERTURA do
+       protocolo, não a conclusão. Vimos linhas abertas em jan e escritas em jun.
+     Por isso o gráfico usa a primeira e a tabela mostra as duas. O total pela
+     minuta é sólido; a distribuição dele pelos meses, não. */
+  const serieAcordo = {};
+  const mesesAcordo = [...new Set([
+    ...Object.keys(D.acordos.serie),
+    ...Object.keys(serieMotivo).filter(m => (serieMotivo[m]||{})["Acordo"])
+  ])].filter(m => m >= D.janela_inicio).sort();
+  for (const m of mesesAcordo) serieAcordo[m] = {
+    "Encerrado por acordo": (serieMotivo[m]||{})["Acordo"] || 0,
+    "Minuta protocolada": D.acordos.serie[m] || 0
+  };
+  const CORES_ACORDO = {"Encerrado por acordo":"var(--acordo)", "Minuta protocolada":"var(--acordo-2)"};
+  const serieEncAcordo = {};
+  for (const m of mesesAcordo) serieEncAcordo[m] = {"Encerrado por acordo": serieAcordo[m]["Encerrado por acordo"]};
+  const fechados = meses.filter(m => !ehParcial(m));
+  const media3 = fechados.slice(-3).reduce((s,m)=>s+Object.values(serieMotivo[m]).reduce((a,b)=>a+b,0),0)/Math.max(1,fechados.slice(-3).length);
+
+  const projetoChaves = categorias(D.encerramentos.projeto).chaves;
+
+  const sec = document.getElementById("sec-encerramentos");
+  sec.append(
+    faixa([
+      {rotulo:"Encerrados", valor:n(totalEnc), tom:"a",
+       nota:`${pct(totalEnc/D.total_casos,1)} do recorte`},
+      {rotulo:"Média dos 3 últimos", valor:n(Math.round(media3)),
+       nota:fechados.slice(-3).map(rotuloMes).join(" · ")},
+      {rotulo:"Acordo fechado", valor:n(D.acordos.casos), tom:"b",
+       nota:`casos com <i>Protocolar minuta</i> concluída`},
+      {rotulo:"Acordo no encerramento", valor:n(acordosPorMotivo), tom:"b",
+       nota:"casos com motivo de encerramento <i>Acordo</i>"}
+    ]),
+    cartao("Encerramentos mês a mês, por motivo",
+      "Casos com <code>data_encerramento</code> preenchida, quebrados pelo motivo registrado no encerramento.",
+      legenda(chaves, cores),
+      colunasEmpilhadas(meses, serieMotivo, chaves, cores,
+        {descricao:"encerramentos por mês, empilhados por motivo"}),
+      razao(meses, serieMotivo, chaves, {
+        extras:[{titulo:"Êxito no encerr.",
+                 valor:(m,v,t)=> t ? pct(((v["Improcedência"]||0)+(v["Extinção"]||0))/t,0) : "—",
+                 rodape:(s,g)=> g ? pct(((s["Improcedência"]||0)+(s["Extinção"]||0))/g,1) : "—"}]
+      })
+    ),
+    cartao("Acordo mês a mês",
+      `Duas contas do mesmo fato: <b>${n(acordosPorMotivo)}</b> casos encerrados com motivo <i>Acordo</i> e <b>${n(D.acordos.casos)}</b> com a ação <i>Protocolar minuta</i> concluída (${n(D.acordos.linhas)} linhas de ação, contadas uma vez por caso). Chegam quase ao mesmo lugar por caminhos independentes, o que é um bom sinal para o <b>total</b>.`,
+      el("div",{class:"aviso"},
+        el("p",{html:"<b>Só uma das duas serve para o eixo do tempo.</b> O encerramento tem data do fato (<code>data_encerramento</code>). A minuta não tem: <code>data_conclusao_acordo</code> está vazio em todo o recorte e o <code>write_date</code> da ação muda a cada edição posterior, então o único carimbo é o <code>create_date</code> — a <b>abertura</b> do protocolo. Há linhas abertas em janeiro e escritas em junho."}),
+        el("p",{html:"Por isso o gráfico abaixo usa o encerramento. A coluna da minuta está na tabela para conferência, mas <b>não use a distribuição mensal dela</b> — o total é que vale."})),
+      el("div",{style:"height:16px"}),
+      legenda(["Encerrado por acordo"], CORES_ACORDO),
+      colunasEmpilhadas(mesesAcordo, serieEncAcordo, ["Encerrado por acordo"], CORES_ACORDO,
+        {altura:210, descricao:"casos encerrados por acordo, por mês de encerramento"}),
+      razao(mesesAcordo, serieAcordo, ["Encerrado por acordo","Minuta protocolada"],
+        {semTotal:true, rotuloTotal:"No período"}),
+      el("p",{class:"nota-rodape", style:"padding-top:14px"},
+        `A diferença entre as duas colunas são casos com a minuta protocolada que ainda não foram encerrados, ou que foram encerrados sob outro motivo — vale conferir esses antes de fechar o mês. Também há acordo homologado antes do encerramento formal, e aí a minuta vem primeiro.`)
+    ),
+    cartao("Encerramentos por projeto",
+      "O mesmo volume, quebrado pelo projeto do caso em vez do motivo. Como na aba de entradas, o projeto é o de <b>hoje</b> — reclassificar um caso reescreve o passado desta tabela.",
+      legenda(projetoChaves, paleta(projetoChaves)),
+      razao(Object.keys(D.encerramentos.projeto).filter(m=>m>=D.janela_inicio).sort(),
+            D.encerramentos.projeto, projetoChaves, {}))
+  );
+}
+
+/* =================== 3. ÊXITO =================== */
+const MERITO = ["Improcedente","Favorável"];
+const PROCESSUAL = ["Extinção sem Julgamento do Mérito","Extinção da Execução"];
+const EXITO = [...MERITO, ...PROCESSUAL];
+const DERROTA = ["Procedente","Parcialmente Procedente","Desfavorável"];
+
+function montarExito(){
+  const serie = D.sentencas.serie;
+  const {meses, antes, temAntes} = janela(serie);
+  const ORDEM = ["Improcedente","Extinção sem Julgamento do Mérito","Extinção da Execução",
+                 "Homologação de Acordo","Parcialmente Procedente","Procedente","(sem tipo)"];
+  const {chaves, total} = categorias(serie, ORDEM);
+  const cores = paleta(chaves);
+
+  /* Denominador = sentenças com tipo informado. Homologação de acordo entra no
+     denominador (é um desfecho); "(sem tipo)" fica de fora e aparece em coluna
+     própria, para ninguém achar que sumiu. */
+  const comTipo = v => Object.entries(v).reduce((s,[k,x])=> k==="(sem tipo)" ? s : s+x, 0);
+  const acertos = v => EXITO.reduce((s,k)=>s+(v[k]||0),0);
+
+  const merito = v => MERITO.reduce((s,k)=>s+(v[k]||0),0);
+  const processual = v => PROCESSUAL.reduce((s,k)=>s+(v[k]||0),0);
+  const volumes = meses.map(m => comTipo(serie[m]||{}));
+  const taxas = meses.map(m => { const t = comTipo(serie[m]||{}); return t ? acertos(serie[m])/t : null; });
+
+  let totalComTipo = 0, totalAcertos = 0, semTipo = 0, totalMerito = 0, totalProcessual = 0;
+  for (const m of meses){
+    totalComTipo += comTipo(serie[m]||{});
+    totalAcertos += acertos(serie[m]||{});
+    totalMerito += merito(serie[m]||{});
+    totalProcessual += processual(serie[m]||{});
+    semTipo += (serie[m]||{})["(sem tipo)"]||0;
+  }
+  const faixaIC = wilson(totalAcertos, totalComTipo);
+
+  /* Quebra por projeto: onde a taxa é melhor e pior, com o piso de amostra à vista. */
+  const linhasProjeto = Object.entries(D.sentencas.projeto).map(([p,v]) => {
+    const t = comTipo(v), a = acertos(v);
+    return {projeto:p, total:t, acertos:a, merito:merito(v), processual:processual(v),
+            taxa: t ? a/t : null, ic: wilson(a,t)};
+  }).sort((x,y) => y.total - x.total);
+
+  const sec = document.getElementById("sec-exito");
+  sec.append(
+    faixa([
+      {rotulo:"Sentenças no período", valor:n(totalComTipo),
+       nota: semTipo ? `${n(semTipo)} sem tipo, fora da conta` : "todas com tipo informado"},
+      {rotulo:"Êxito total", valor:pct(totalAcertos/Math.max(1,totalComTipo)), tom:"g",
+       nota: faixaIC ? `IC 95%: ${pct(faixaIC[0],1)} a ${pct(faixaIC[1],1)}` : ""},
+      {rotulo:"— de mérito", valor:pct(totalMerito/Math.max(1,totalComTipo)), tom:"g",
+       nota:`${n(totalMerito)} improcedentes — o pedido foi julgado e rejeitado`},
+      {rotulo:"— processual", valor:pct(totalProcessual/Math.max(1,totalComTipo)),
+       nota:`${n(totalProcessual)} extinções sem mérito — o pedido não chegou a ser julgado`},
+      {rotulo:"Condenações", valor:pct(DERROTA.reduce((s,k)=>s+(total[k]||0),0)/Math.max(1,totalComTipo)), tom:"r",
+       nota:`${n(DERROTA.reduce((s,k)=>s+(total[k]||0),0))} sentenças`}
+    ]),
+    totalProcessual > totalMerito ? el("div",{class:"aviso"},
+      el("p",{html:`<b>Leia a taxa aberta, não fechada.</b> ${pct(totalProcessual/Math.max(1,totalComTipo),1)} das sentenças deste recorte são <b>extinção sem julgamento do mérito</b> — mais do que as improcedências (${pct(totalMerito/Math.max(1,totalComTipo),1)}). Somadas dão os ${pct(totalAcertos/Math.max(1,totalComTipo),1)} de êxito, mas as duas não valem o mesmo: na extinção sem mérito o pedido não chegou a ser julgado, e parte volta como ação nova, mesma parte e mesmo pedido.`}),
+      el("p",{html:"A definição fechada é a mesma do painel <i>Êxito e Reversão</i>, de propósito, para os dois conversarem. Aqui ela pesa muito mais — por isso a página abre as duas parcelas em toda tabela."})
+    ) : null,
+    cartao("Êxito mês a mês",
+      "Êxito = <b>Improcedente + Extinção</b> sobre as sentenças com tipo informado, aberto em <b>mérito</b> (improcedente: o pedido foi julgado e rejeitado) e <b>processual</b> (extinção: o pedido não chegou a ser julgado). Homologação de acordo entra no denominador — é um desfecho, não uma ausência. <i>Sem tipo</i> fica fora e aparece em coluna própria. A barra é o volume de sentenças; a linha é o êxito total.",
+      barrasComLinha(meses, volumes, taxas,
+        {cor:"var(--exito)", unidade:"sentenças", descricao:"volume de sentenças por mês com a taxa de êxito sobreposta"}),
+      legenda(chaves, cores),
+      colunasEmpilhadas(meses, serie, chaves, cores,
+        {altura:250, descricao:"sentenças por mês, empilhadas por tipo"}),
+      razao(meses, serie, chaves, {
+        extras:[
+          {titulo:"Êxito mérito",
+           valor:(m,v)=> { const t=comTipo(v); return t ? pct(merito(v)/t,0) : "—"; },
+           rodape:()=> pct(totalMerito/Math.max(1,totalComTipo),1)},
+          {titulo:"Êxito processual",
+           valor:(m,v)=> { const t=comTipo(v); return t ? pct(processual(v)/t,0) : "—"; },
+           rodape:()=> pct(totalProcessual/Math.max(1,totalComTipo),1)},
+          {titulo:"Êxito total",
+           valor:(m,v)=> { const t=comTipo(v); return t ? pct(acertos(v)/t,0) : "—"; },
+           rodape:()=> pct(totalAcertos/Math.max(1,totalComTipo),1)}]
+      }),
+      temAntes ? el("p",{class:"nota-rodape", style:"padding-top:14px"},
+        `${n(somaAntes(antes))} sentenças são anteriores a ${rotuloMes(D.janela_inicio)} — processos que já tinham sentença quando entraram no programa. Estão no total do recorte, fora do eixo.`) : null
+    ),
+    cartao("Êxito por projeto",
+      `Taxa de cada projeto no período inteiro, com o intervalo de Wilson a 95%. Projeto com menos de ${D.min_amostra||10} sentenças aparece marcado: ali a faixa é larga demais para concluir qualquer coisa.`,
+      el("div",{class:"rolagem"},
+        el("table",{class:"razao"},
+          el("thead",{}, el("tr",{},
+            el("th",{class:"mes", scope:"col"},"Projeto"),
+            el("th",{scope:"col"},"Sentenças"),
+            el("th",{scope:"col"},"Mérito"),
+            el("th",{scope:"col"},"Processual"),
+            el("th",{scope:"col"},"Êxito total"),
+            el("th",{scope:"col"},"IC 95%"))),
+          el("tbody",{}, linhasProjeto.map(l => el("tr",{},
+            el("td",{class:"mes"}, l.total < (D.min_amostra||10) ? l.projeto + " · amostra pequena" : l.projeto),
+            el("td",{}, n(l.total)),
+            el("td",{}, l.total ? pct(l.merito/l.total,0) : "—"),
+            el("td",{}, l.total ? pct(l.processual/l.total,0) : "—"),
+            el("td",{class:"taxa"}, l.taxa===null ? "—" : pct(l.taxa,1)),
+            el("td",{}, l.ic ? `${pct(l.ic[0],0)} – ${pct(l.ic[1],0)}` : "—")))),
+          el("tfoot",{}, el("tr",{},
+            el("td",{class:"mes"},"No período"),
+            el("td",{}, n(totalComTipo)),
+            el("td",{}, pct(totalMerito/Math.max(1,totalComTipo),1)),
+            el("td",{}, pct(totalProcessual/Math.max(1,totalComTipo),1)),
+            el("td",{}, pct(totalAcertos/Math.max(1,totalComTipo),1)),
+            el("td",{}, faixaIC ? `${pct(faixaIC[0],0)} – ${pct(faixaIC[1],0)}` : "—"))))))
+  );
+}
+
+/* =================== 4. REVERSÃO RECURSAL =================== */
+function montarReversao(){
+  const serie = D.reversao.serie;
+  const meses = Object.keys(serie).filter(m => m >= D.janela_inicio).sort();
+  const soma = {};
+  for (const v of Object.values(serie))
+    for (const [k,x] of Object.entries(v)) soma[k] = (soma[k]||0) + x;
+  const pega = (quem, t) => soma[quem+":"+t] || 0;
+  const bloco = quem => ({
+    FF: pega(quem,"FF"), FD: pega(quem,"FD"), DF: pega(quem,"DF"), DD: pega(quem,"DD"), X: pega(quem,"X")
+  });
+  const nosso = bloco("nosso"), contraria = bloco("contraria"), vazio = bloco("vazio");
+  const classificaveis = nosso.FF + nosso.FD + nosso.DF + nosso.DD;
+  const partindoDeDerrota = nosso.DF + nosso.DD;
+  const taxa = partindoDeDerrota ? nosso.DF/partindoDeDerrota : null;
+  const ic = wilson(nosso.DF, partindoDeDerrota);
+  const totalAcordaos = Object.values(soma).reduce((a,b)=>a+b,0);
+  const semQuem = Object.values(vazio).reduce((a,b)=>a+b,0);
+
+  /* Série mensal do recurso nosso, só nos acórdãos que partiram de derrota. */
+  const serieNosso = {};
+  for (const m of meses){
+    const v = serie[m]||{};
+    serieNosso[m] = {"Reverteu a favor": v["nosso:DF"]||0, "Manteve a derrota": v["nosso:DD"]||0};
+  }
+  const denom = meses.map(m => serieNosso[m]["Reverteu a favor"] + serieNosso[m]["Manteve a derrota"]);
+  const taxasMes = meses.map((m,i) => denom[i] ? serieNosso[m]["Reverteu a favor"]/denom[i] : null);
+
+  const sec = document.getElementById("sec-reversao");
+  sec.append(
+    faixa([
+      {rotulo:"Acórdãos no recorte", valor:n(totalAcordaos), tom:"a",
+       nota:`${n(semQuem)} sem <code>dossie_recurso</code>, fora da conta`},
+      {rotulo:"Recurso nosso", valor:n(classificaveis),
+       nota:"classificáveis pela transição"},
+      {rotulo:"Partindo de derrota", valor:n(partindoDeDerrota),
+       nota:"o denominador da reversão"},
+      {rotulo:"Reversão a favor", valor: taxa===null ? "—" : pct(taxa,1), tom:"g",
+       nota: ic ? `IC 95%: ${pct(ic[0],0)} a ${pct(ic[1],0)}` : ""}
+    ]),
+    partindoDeDerrota < 30 ? el("div",{class:"aviso"},
+      el("p",{html:`<b>Amostra pequena — trate como sinal, não como número.</b> São ${n(partindoDeDerrota)} acórdãos com recurso nosso partindo de sentença desfavorável. O intervalo de Wilson a 95% vai de ${ic?pct(ic[0],0):"—"} a ${ic?pct(ic[1],0):"—"}: uma faixa larga demais para sustentar meta ou comparação entre meses.`}),
+      el("p",{html:`Some-se a isso que <code>dossie_recurso</code> está vazio em ${n(semQuem)} dos ${n(totalAcordaos)} acórdãos do recorte. É a maior fragilidade do indicador, e vale mais preencher esse campo do que refinar a conta.`})
+    ) : null,
+    cartao("A transição que define a reversão",
+      "Cada acórdão é classificado pela transição entre a classe da sentença de origem e a do resultado depois do acórdão. <b>Favorável</b> = Improcedente, Extinção, Favorável. <b>Desfavorável</b> = Procedente, Parcialmente Procedente, Desfavorável. Mudar de tipo dentro da mesma classe não é reversão — é o mesmo resultado dito de outro jeito.",
+      el("div",{class:"matriz"},
+        el("div",{class:"cab"},""),
+        el("div",{class:"cab"},"Acórdão favorável"),
+        el("div",{class:"cab"},"Acórdão desfavorável"),
+        el("div",{class:"cab"},"Sentença favorável"),
+        el("div",{class:"cel"}, el("b",{},n(nosso.FF)), el("span",{},"manteve o êxito")),
+        el("div",{class:"cel"}, el("b",{style:"color:var(--derrota)"},n(nosso.FD)), el("span",{},"perdeu no acórdão")),
+        el("div",{class:"cab"},"Sentença desfavorável"),
+        el("div",{class:"cel chave"}, el("b",{style:"color:var(--exito)"},n(nosso.DF)), el("span",{},"reverteu a favor")),
+        el("div",{class:"cel"}, el("b",{},n(nosso.DD)), el("span",{},"manteve a derrota"))),
+      el("p",{class:"nota-rodape", style:"padding-top:14px"},
+        `A taxa de reversão é a célula destacada sobre a linha inteira de baixo: ${n(nosso.DF)} de ${n(partindoDeDerrota)}. Só entram os casos em que o recurso foi nosso — recurso da parte contrária é defesa, e está no bloco seguinte.`)
+    ),
+    cartao("Reversão mês a mês, só com recurso nosso",
+      "A barra é o volume de acórdãos que partiram de sentença desfavorável; a linha é quanto disso virou a nosso favor.",
+      barrasComLinha(meses, denom, taxasMes,
+        {cor:"var(--exito)", unidade:"acórdãos", altura:250,
+         descricao:"acórdãos com recurso nosso partindo de derrota, com a taxa de reversão sobreposta"}),
+      razao(meses, serieNosso, ["Reverteu a favor","Manteve a derrota"], {
+        extras:[{titulo:"Reversão",
+                 valor:(m,v,t)=> t ? pct(v["Reverteu a favor"]/t,0) : "—",
+                 rodape:()=> taxa===null ? "—" : pct(taxa,1)}]
+      })
+    ),
+    cartao("Recurso da parte contrária, e os acórdãos sem quem recorreu",
+      "Não é reversão: é defesa em segundo grau. Fica separado para não inflar nem afundar a taxa acima.",
+      el("div",{class:"rolagem"},
+        el("table",{class:"razao"},
+          el("thead",{}, el("tr",{},
+            el("th",{class:"mes", scope:"col"},"Quem recorreu"),
+            el("th",{scope:"col"},"Manteve êxito"),
+            el("th",{scope:"col"},"Perdeu no acórdão"),
+            el("th",{scope:"col"},"Reverteu a favor"),
+            el("th",{scope:"col"},"Manteve derrota"),
+            el("th",{scope:"col"},"Sem classificar"),
+            el("th",{scope:"col"},"Total"))),
+          el("tbody",{}, [["Parte contrária", contraria], ["Sem registro", vazio]].map(([rot,b]) =>
+            el("tr",{},
+              el("td",{class:"mes"}, rot),
+              el("td",{},n(b.FF)), el("td",{},n(b.FD)), el("td",{},n(b.DF)),
+              el("td",{},n(b.DD)), el("td",{},n(b.X)),
+              el("td",{class:"taxa"}, n(b.FF+b.FD+b.DF+b.DD+b.X))))))))
+  );
+}
+
+/* =================== 5. PROJETOS PARALELOS =================== */
+function montarParalelos(){
+  const P = D.paralelos;
+  const ao = P.alteracao_objeto;
+  const chavesAO = ["Concluída","Pendente","Cancelada"].filter(k => (ao.estado[k]||0) > 0);
+  const coresAO = paleta(chavesAO);
+  const totalAO = Object.values(ao.estado).reduce((a,b)=>a+b,0);
+  const mesesAO = Object.keys(ao.serie).filter(m => m >= D.janela_inicio).sort();
+
+  const espera = [
+    {titulo:"Análise de causa raiz",
+     campo:"<code>causa_raiz_id</code> e <code>subcausa_raiz_id</code> em <code>dossie.dossie</code>",
+     situacao:`o campo existe e tem as três opções (Sistêmico, Formalização, Procedimento), mas está vazio nos ${n(D.total_casos)} casos do recorte`,
+     destrava:"basta a equipe começar a preencher — o painel já lê o campo e a seção acende sozinha na próxima geração"},
+    {titulo:"Decisor",
+     campo:"<code>decisor</code> em <code>dossie.dossie</code>",
+     situacao:`o campo existe como texto livre e está vazio nos ${n(D.total_casos)} casos`,
+     destrava:"texto livre não agrupa: antes de medir, vale virar uma lista de opções, senão cada grafia do mesmo juízo vira uma categoria"},
+    {titulo:"Motivo de vitória e derrota",
+     campo:"nenhum campo no MMP",
+     situacao:"existe o modelo <code>motivos.perda</code> com cinco motivos (falha na operação do cliente, ausência de subsídios, judiciário não reconhece o produto, prática ilegal do cliente, revelia), mas nenhum campo do caso aponta para ele",
+     destrava:"precisa de um campo no caso ligado a <code>motivos.perda</code>, e de um equivalente para o lado da vitória"},
+    {titulo:"Litispendência",
+     campo:"nenhum campo no MMP",
+     situacao:`o mais próximo hoje é o motivo de encerramento <i>Extinto por perempção, litispendência ou coisa julgada</i>, que junta três coisas diferentes, e <i>Duplicidade</i>`,
+     destrava:"precisa de um marcador próprio no caso, ou de separar a litispendência dentro do motivo de encerramento"}
+  ];
+
+  const sec = document.getElementById("sec-paralelos");
+  sec.append(
+    el("div",{class:"aviso"},
+      el("p",{html:"<b>Um dos cinco projetos paralelos tem dado hoje.</b> Os outros quatro estão desenhados e ligados ao painel, mas o campo que os alimenta está vazio ou ainda não existe no MMP. Cada cartão diz exatamente o que falta — quando o campo começar a ser preenchido, a seção acende na geração seguinte, sem mexer no código."})),
+    cartao("Alteração de objeto e assunto",
+      `Ação <b>Solicitar alteração de objeto</b> nos casos do recorte: ${n(totalAO)} solicitações. O que importa aqui não é o volume, é o desfecho — e hoje ${pct((ao.estado["Cancelada"]||0)/Math.max(1,totalAO),0)} das solicitações são canceladas.`,
+      faixa([
+        {rotulo:"Solicitações", valor:n(totalAO), tom:"a"},
+        {rotulo:"Concluídas", valor:n(ao.estado["Concluída"]||0), tom:"g",
+         nota:pct((ao.estado["Concluída"]||0)/Math.max(1,totalAO),1)+" do total"},
+        {rotulo:"Canceladas", valor:n(ao.estado["Cancelada"]||0), tom:"r",
+         nota:pct((ao.estado["Cancelada"]||0)/Math.max(1,totalAO),1)+" do total"},
+        {rotulo:"Pendentes", valor:n(ao.estado["Pendente"]||0),
+         nota:"ainda em aberto"}
+      ]),
+      el("div",{style:"height:18px"}),
+      legenda(chavesAO, coresAO),
+      colunasEmpilhadas(mesesAO, ao.serie, chavesAO, coresAO,
+        {altura:240, descricao:"solicitações de alteração de objeto por mês e desfecho"}),
+      razao(mesesAO, ao.serie, chavesAO, {
+        extras:[{titulo:"Conclusão",
+                 valor:(m,v,t)=> t ? pct((v["Concluída"]||0)/t,0) : "—",
+                 rodape:(s,g)=> g ? pct((s["Concluída"]||0)/g,1) : "—"}]
+      }),
+      el("p",{class:"nota-rodape", style:"padding-top:14px"},
+        "O mês é o de abertura da solicitação, e o cancelamento em massa concentrado em alguns meses sugere lote reprocessado, não decisão caso a caso. Vale olhar o que aconteceu em mai/26 e jul/26 antes de tirar conclusão da taxa de conclusão.")
+    ),
+    el("div",{class:"paralelos"},
+      espera.map(e => el("div",{class:"par off"},
+        el("h3",{}, e.titulo),
+        el("div",{}, el("span",{class:"estado espera"},"aguardando dado")),
+        el("p",{html:"<b>Onde moraria:</b> " + e.campo}),
+        el("p",{html:"<b>Hoje:</b> " + e.situacao}),
+        el("p",{html:"<b>O que destrava:</b> " + e.destrava}))))
+  );
+}
+
+/* ---------------- abas ---------------- */
+const SECOES = [
+  {id:"entradas", nome:"Entradas", montar:montarEntradas},
+  {id:"encerramentos", nome:"Encerramentos e acordo", montar:montarEncerramentos},
+  {id:"exito", nome:"Êxito", montar:montarExito},
+  {id:"reversao", nome:"Reversão recursal", montar:montarReversao},
+  {id:"paralelos", nome:"Projetos paralelos", montar:montarParalelos}
+];
+
+function iniciar(){
+  document.getElementById("selo-casos").textContent = n(D.total_casos);
+  document.getElementById("selo-data").textContent = D.as_of;
+
+  const nav = document.getElementById("abas");
+  SECOES.forEach((s, i) => {
+    const b = el("button",{type:"button", role:"tab", id:"aba-"+s.id,
+                           "aria-controls":"sec-"+s.id, "aria-selected": i===0 ? "true":"false"}, s.nome);
+    b.addEventListener("click", () => trocar(s.id));
+    nav.append(b);
+    s.montar();                       // tudo desenhado de uma vez: a página nasce pronta
+  });
+
+  function trocar(id){
+    for (const s of SECOES){
+      const ativo = s.id === id;
+      document.getElementById("sec-"+s.id).hidden = !ativo;
+      document.getElementById("aba-"+s.id).setAttribute("aria-selected", String(ativo));
+    }
+    history.replaceState(null, "", "#"+id);
+  }
+  const inicial = location.hash.slice(1);
+  if (SECOES.some(s => s.id === inicial)) trocar(inicial);
+
+  nav.addEventListener("keydown", ev => {
+    const passo = ev.key === "ArrowRight" ? 1 : ev.key === "ArrowLeft" ? -1 : 0;
+    if (!passo) return;
+    const atual = SECOES.findIndex(s => document.getElementById("aba-"+s.id).getAttribute("aria-selected") === "true");
+    const proximo = SECOES[(atual + passo + SECOES.length) % SECOES.length];
+    trocar(proximo.id);
+    document.getElementById("aba-"+proximo.id).focus();
+    ev.preventDefault();
+  });
+}
+iniciar();
+</script>

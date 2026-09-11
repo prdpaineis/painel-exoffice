@@ -4,8 +4,12 @@
 *.env
 !.env.example
 
-# saída gerada (contém dados de cliente)
-out/
+# saída gerada. A página vai para o repositório (decisão explícita: o repo é
+# privado e a página só leva agregados); o dados.json fica fora porque repete o
+# mesmo conteúdo e só serve para diff local. `out/*` e não `out/`: o git não
+# reinclui arquivo de dentro de uma pasta ignorada por inteiro.
+out/*
+!out/painel-exoffice.html
 
 # python
 __pycache__/

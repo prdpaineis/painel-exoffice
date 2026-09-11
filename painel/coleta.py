@@ -175,8 +175,8 @@ def paralelos(odoo: Odoo, casos: list[int]) -> dict[str, Any]:
     """Os projetos em paralelo dentro do Escritório externo.
 
     Hoje só "Alteração de objeto" tem dado. `causa_raiz_id`, `subcausa_raiz_id` e
-    `decisor` existem como campo em `dossie.dossie` mas estão vazios nos 8.132
-    casos (conferido em set/2026); "Motivo de vitória e derrota" e
+    `decisor` existem como campo em `dossie.dossie` mas estão vazios em todo o
+    recorte (conferido em set/2026); "Motivo de vitória e derrota" e
     "Litispendência" ainda não têm campo nenhum no MMP. Medimos os três primeiros
     de verdade e devolvemos zero honesto nos outros — a página diz "ainda não
     instrumentado" em vez de desenhar um gráfico vazio que parece resultado.
